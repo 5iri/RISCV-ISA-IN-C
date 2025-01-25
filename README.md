@@ -1,1 +1,1 @@
-# MIPS-ISA-IN-C
+# RISCV-ISA-IN-C

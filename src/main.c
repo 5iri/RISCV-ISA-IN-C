@@ -13,16 +13,20 @@ int main() {
         uint32_t instr = fetch(); // Fetch instruction
         DecodedInstruction decoded = decode(instr);            // Decoding the fetched instruction
         get_operation(decoded);
-        int32_t alu(int32_t operand1, int32_t operand2, Operation operation);
+        if (decoded.opcode == 0x13) {
+            reg[decoded.rd] = alu( decoded.rs1, decoded.imm, get_operation(decoded));
+        }
+        else if (decoded.opcode == 0x33) {
+            reg[decoded.rd] = alu(decoded.rs1, decoded.rs2, get_operation(decoded));
+        }
         memory_access();          // Memory access (if needed)
         writeback();              // Writeback (if needed)
         pc += 4;                  // Increment program counter
     }
 
-    // Print registers
-    for (int i = 0; i < REG_COUNT; i++) {
+    printf("registers\n");
+    for (int i = 0; i < 31; i++) {
         printf("x%d = %d\n", i, reg[i]);
     }
-
     return 0;
 }

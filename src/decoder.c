@@ -5,8 +5,8 @@ DecodedInstruction decode(uint32_t instr) {
     decoded.opcode = instr & 0x7F;
     decoded.rd = (instr >> 7) & 0x1F;
     decoded.funct3 = (instr >> 12) & 0x7;
-    decoded.rs1 = (instr >> 15) & 0x1F;
-    decoded.rs2 = (instr >> 20) & 0x1F;
+    decoded.rs1 = reg[(instr >> 15) & 0x1F];
+    decoded.rs2 = reg[(instr >> 20) & 0x1F];
     decoded.funct7 = (instr >> 25) & 0x7F;
 
     // Handle immediate values (I-type, S-type)

@@ -1,11 +1,11 @@
 #ifndef RISC_V_H
 #define RISC_V_H
 
+#include <stdio.h>
 #include <stdint.h>
 
 #define MEM_SIZE 1024
 #define REG_COUNT 32
-
 
 // Decoded instruction structure
 typedef struct {
@@ -36,7 +36,7 @@ extern uint32_t pc;
 uint32_t fetch();
 DecodedInstruction decode(uint32_t instr);
 Operation get_operation(DecodedInstruction decoded);
-int32_t alu(int32_t operand1, int32_t operand2, Operation operation);
+int32_t alu(int32_t rs1, int32_t rs2, Operation operation); // ALU declaration
 void memory_access();
 void writeback();
 
