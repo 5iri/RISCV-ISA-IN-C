@@ -3,20 +3,10 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 #define MEM_SIZE 1024
 #define REG_COUNT 32
-
-// Decoded instruction structure
-typedef struct {
-    uint32_t opcode;
-    uint32_t rd;
-    uint32_t funct3;
-    uint32_t rs1;
-    uint32_t rs2;
-    uint32_t funct7;
-    int32_t imm;
-} DecodedInstruction;
 
 // Operation type
 typedef enum {
@@ -24,6 +14,62 @@ typedef enum {
     OP_ADDI,
     OP_UNKNOWN
 } Operation;
+
+
+
+// Common fields for all instruction types
+typedef struct {
+    uint8_t opcode;
+    uint8_t rd;
+    uint8_t funct3;
+    uint8_t rs1;
+    uint8_t rs2;
+    uint8_t funct7;
+    int32_t imm;
+} DecodedInstruction;
+
+// I-type instruction structure
+typedef struct {
+    uint8_t opcode;
+    uint8_t rd;
+    uint8_t funct3;
+    uint8_t rs1;
+    int32_t imm;
+} ITypeInstruction;
+
+// R-type instruction structure
+typedef struct {
+    uint8_t opcode;
+    uint8_t rd;
+    uint8_t funct3;
+    uint8_t rs1;
+    uint8_t rs2;
+    uint8_t funct7;
+} RTypeInstruction;
+
+// S-type instruction structure
+typedef struct {
+    uint8_t opcode;
+    uint8_t funct3;
+    uint8_t rs1;
+    uint8_t rs2;
+    int32_t imm;
+} STypeInstruction;
+
+// U-type instruction structure
+typedef struct {
+    uint8_t opcode;
+    uint8_t rd;
+    int32_t imm;
+} UTypeInstruction;
+
+// J-type instruction structure
+typedef struct {
+    uint8_t opcode;
+    uint8_t rd;
+    int32_t imm;
+} JTypeInstruction;
+
 
 // Memory and registers
 extern uint32_t memory[MEM_SIZE];
