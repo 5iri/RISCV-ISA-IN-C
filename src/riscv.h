@@ -81,7 +81,7 @@ extern uint32_t pc;
 // Function prototypes
 uint32_t fetch();
 DecodedInstruction decode(uint32_t instr);
-Operation get_operation(DecodedInstruction decoded);
+void get_operation(DecodedInstruction decoded);
 int32_t alu(int32_t rs1, int32_t rs2, Operation operation); // ALU declaration
 void memory_access();
 void writeback();

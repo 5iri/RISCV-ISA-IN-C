@@ -40,6 +40,6 @@ int load_program(const char *filename) {
 }
 
 void memory_access() {
-    const char *filename = "src/example.hex";  // Hex file containing only hex values
+    const char *filename = "example.hex";  // Hex file containing only hex values
     load_program(filename);
 }

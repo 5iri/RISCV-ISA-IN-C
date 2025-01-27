@@ -1,16 +1,16 @@
 #include "riscv.h"
 
-Operation get_operation(DecodedInstruction decoded) {
+void get_operation(DecodedInstruction decoded) {
     switch (decoded.opcode) {
         case 0x13: // I-type (e.g., ADDI)
-            return OP_ADDI;
+            reg[decoded.rd] = alu( reg[decoded.rs1], decoded.imm, OP_ADDI);
+            break;
         case 0x33: // R-type (e.g., ADD)
             if (decoded.funct3 == 0x0 && decoded.funct7 == 0x00) {
-                return OP_ADD;
+                reg[decoded.rd] = alu(reg[decoded.rs1], reg[decoded.rs2], OP_ADD);
             }
             break;
         default:
             break;
     }
-    return OP_UNKNOWN;
 }
