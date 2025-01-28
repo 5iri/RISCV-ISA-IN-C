@@ -9,7 +9,6 @@ int main() {
         uint32_t instr = fetch(); // Fetch instruction
         DecodedInstruction decoded = decode(instr);            // Decoding the fetched instruction
         get_operation(decoded);
-        writeback();              // Writeback (if needed)
         pc += 4;                  // Increment program counter
     }
 

@@ -116,7 +116,6 @@ DecodedInstruction decode(uint32_t instr);
 void get_operation(DecodedInstruction decoded);
 int32_t alu(int32_t rs1, int32_t rs2, Operation operation); // ALU declaration
 void instr_dump();
-void writeback();
 void memory_store(uint32_t addr, int32_t data, Operation operation);
 int32_t memory_load(uint32_t addr, Operation operation);
 
