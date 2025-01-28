@@ -2,7 +2,7 @@
 #include <string.h>
 
 
-uint32_t memory[MEM_SIZE]; // Initialize memory to 0
+uint32_t instr_memory[INSTR_MEM_SIZE]; // Initialize memory to 0
 
 
 // Function to load instructions from a hex file into memory
@@ -30,7 +30,7 @@ int load_program(const char *filename) {
             uint32_t value = (uint32_t)strtoul(byte_str, NULL, 16);
 
             // Print the value in the format 0x001041b3
-            memory[count] = value;
+            instr_memory[count] = value;
             count++;
         }
     }
@@ -39,7 +39,7 @@ int load_program(const char *filename) {
     return 0;  // Success
 }
 
-void memory_access() {
+void instr_dump() {
     const char *filename = "example.hex";  // Hex file containing only hex values
     load_program(filename);
 }

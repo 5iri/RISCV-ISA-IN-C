@@ -7,7 +7,7 @@ SRC_DIR = src
 BUILD_DIR = build
 
 # Source files (relative to SRC_DIR)
-SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/memory.c $(SRC_DIR)/alu.c $(SRC_DIR)/control_unit.c $(SRC_DIR)/decoder.c $(SRC_DIR)/fetch.c $(SRC_DIR)/regfile.c $(SRC_DIR)/writeback.c
+SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/instr_mem.c $(SRC_DIR)/alu.c $(SRC_DIR)/control_unit.c $(SRC_DIR)/decoder.c $(SRC_DIR)/fetch.c $(SRC_DIR)/regfile.c $(SRC_DIR)/writeback.c $(SRC_DIR)/data_mem.c
 
 # Object files (relative to BUILD_DIR)
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

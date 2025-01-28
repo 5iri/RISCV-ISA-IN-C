@@ -5,13 +5,42 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#define MEM_SIZE 1024
+#define INSTR_MEM_SIZE 512
+#define MEM_SIZE 512
 #define REG_COUNT 32
 
 // Operation type
 typedef enum {
     OP_ADD,
     OP_ADDI,
+    OP_SUB,
+    OP_SLL,
+    OP_SLLI,
+    OP_SLT,
+    OP_SLTI,
+    OP_SLTU,
+    OP_SLTIU,
+    OP_XOR,
+    OP_XORI,
+    OP_OR,
+    OP_ORI,
+    OP_AND,
+    OP_ANDI,
+    OP_SRL,
+    OP_SRLI,
+    OP_SRA,
+    OP_SRAI,
+    OP_LUI,
+    OP_AUIPC,
+    OP_BEQ,
+    OP_BNE,
+    OP_BLT,
+    OP_BGE,
+    OP_BLTU,
+    OP_BGEU,
+    BYTE,
+    HALFWORD,
+    WORD,
     OP_UNKNOWN
 } Operation;
 
@@ -72,7 +101,7 @@ typedef struct {
 
 
 // Memory and registers
-extern uint32_t memory[MEM_SIZE];
+extern uint32_t instr_memory[MEM_SIZE];
 extern int32_t reg[REG_COUNT];
 
 // Program counter
@@ -83,7 +112,7 @@ uint32_t fetch();
 DecodedInstruction decode(uint32_t instr);
 void get_operation(DecodedInstruction decoded);
 int32_t alu(int32_t rs1, int32_t rs2, Operation operation); // ALU declaration
-void memory_access();
+void instr_dump();
 void writeback();
 
 #endif // RISC_V_H

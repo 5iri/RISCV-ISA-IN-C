@@ -4,7 +4,7 @@ uint32_t pc = 0; // Program counter starts at 0
 
 int main() {
     // Simulate the CPU
-    memory_access();
+    instr_dump();
     while (pc < MEM_SIZE * 4) {
         uint32_t instr = fetch(); // Fetch instruction
         DecodedInstruction decoded = decode(instr);            // Decoding the fetched instruction
