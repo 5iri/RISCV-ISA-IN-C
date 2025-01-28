@@ -17,6 +17,11 @@ int main() {
     for (int i = 0; i < 31; i++) {
         printf("x%d = %d\n", i, reg[i]);
     }
+
+    printf("memory\n");
+    for (int i = 0; i < MEM_SIZE; i++) {
+        printf("memory_loc[%d] = %d\n", i, memory[i]);
+    }
     
     return 0;
 }

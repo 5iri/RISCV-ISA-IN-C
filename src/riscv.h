@@ -41,6 +41,8 @@ typedef enum {
     BYTE,
     HALFWORD,
     WORD,
+    SIGNED_BYTE,
+    SIGNED_HALFWORD,
     OP_UNKNOWN
 } Operation;
 
@@ -102,6 +104,7 @@ typedef struct {
 
 // Memory and registers
 extern uint32_t instr_memory[MEM_SIZE];
+extern uint32_t memory[MEM_SIZE];
 extern int32_t reg[REG_COUNT];
 
 // Program counter
@@ -114,5 +117,7 @@ void get_operation(DecodedInstruction decoded);
 int32_t alu(int32_t rs1, int32_t rs2, Operation operation); // ALU declaration
 void instr_dump();
 void writeback();
+void memory_store(uint32_t addr, int32_t data, Operation operation);
+int32_t memory_load(uint32_t addr, Operation operation);
 
 #endif // RISC_V_H

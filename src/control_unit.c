@@ -82,10 +82,10 @@ void get_operation(DecodedInstruction decoded) {
                     reg[decoded.rd] = memory_load(reg[decoded.rs1] + decoded.imm, WORD);
                     break;
                 case 0x4: // LBU
-                    reg[decoded.rd] = memory_load(reg[decoded.rs1] + decoded.imm, BYTE);
+                    reg[decoded.rd] = memory_load(reg[decoded.rs1] + decoded.imm, SIGNED_BYTE);
                     break;
                 case 0x5: // LHU
-                    reg[decoded.rd] = memory_load(reg[decoded.rs1] + decoded.imm, HALFWORD);
+                    reg[decoded.rd] = memory_load(reg[decoded.rs1] + decoded.imm, SIGNED_HALFWORD);
                     break;
             }
             break;
